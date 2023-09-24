@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Tab Limiter - Monotasking Assistant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "It's easy to get overwhelmed with too many tabs open. Tab Limiter offers a simple solution by imposing a maximum limit of 5 open tabs.",
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "storage"],
   "background": {
     "service_worker": "background.js"
   },
