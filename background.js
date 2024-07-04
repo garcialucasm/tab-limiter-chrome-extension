@@ -1,3 +1,5 @@
+const MAX_TABS = 6;
+
 // Initialize an object to keep track of open tabs
 let openTabs = {};
 
@@ -41,14 +43,14 @@ chrome.tabs.onCreated.addListener((tab) => {
     // Pass a callback to updateOpenTabs
     getLengthOpenTabs((lengthOpenTabs) => {
       console.log("anonymous function lengthOpenTabs: ", lengthOpenTabs);
-      if (lengthOpenTabs > 5) {
+      if (lengthOpenTabs > MAX_TABS) {
         // If the limit is reached, close the newly created tab
         chrome.tabs.remove(tab.id);
         removeClosedTab(tab.id);
-        console.log("lengthOpenTabs (" + lengthOpenTabs + ") > 5 - Removing " + tabId);
+        console.log("lengthOpenTabs (" + lengthOpenTabs + ") > " + MAX_TABS + " - Removing " + tab);
       } else {
         // If the limit is not reached, add the new tab's ID to the openTabs object
-        console.log("lengthOpenTabs (" + lengthOpenTabs + ") < 5");
+        console.log("lengthOpenTabs (" + lengthOpenTabs + ") < " + MAX_TABS);
         addOpenTab(tab.id);
       }
     });
